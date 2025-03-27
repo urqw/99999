@@ -1,0 +1,1470 @@
+:authors
+cls
+perkill
+invkill
+forget_procs
+proc name
+instr evgname=#%s$ич
+proc name
+instr goraphname=#%s$ич
+proc name
+instr nolaname=#%s$ич
+pln <center><h1>Остров Хйфич</h1></center>
+pln Текст и программирование: <i>#%goraphname$ Павленко</i>
+pln Иллюстрации и тестирование: <i>#%evgname$ Бычков</i>
+pln Ценные советы и едкие комментарии: <i>Нола #%nolaname$</i>
+pln Данная игра содержит изображения обнаженной натуры и сцены жестокого обращения с женщинами и животными, и не рекомендуется к проигрыванию.
+pln Будем продолжать?
+btn main, Хйфич!
+btn authors2, Хйфич?
+btn authors3, Хйфич...
+end
+
+:authors2
+pln Как хотите. Конец.
+end
+:authors3
+pln Итоговая таблица здесь - <a href="http://pavlenko.biz/urq/leaderboard2/">http://pavlenko.biz/urq/leaderboard2/</a>
+pln Список изменений:
+pln <b>Версия 0.1.2 - 21 декабря 2016</b>
+pln - багфиксы, балансные правки, вайп доски почета
+pln   старая доска почета доступна <a href="http://pavlenko.biz/urq/leaderboard2/leaderboard.0.1.1.htm">здесь</a> Ддкфйфич, Зыцргдхдич, Хйфич и все остальные навсегда останутся в наших сердцах :)
+pln <b>Версия 0.1.1 - 20 декабря 2016</b>
+pln - балансные правки, два новых ивента (женщина и торговец)
+pln <b>Версия 0.1.0 - 19 декабря 2016</b>
+pln - добавлены титры, багфиксы, дальше+, версия подготовлена к релизу на КРИЛ 2016
+pln
+pln Будем продолжать?
+btn main, Хйфич!
+btn authors2, Хйфич?
+btn authors, Хйфич...
+end
+
+:main
+entstep=0
+rocks=0
+step=0
+steps=5+rnd6
+sticks=0
+spear=0
+axe=0
+skin=0
+battle=0
+score=0
+ent=0
+dig=0
+pit=0
+beautiful=0
+rich=0
+instr pluses=
+pluseshp=0
+instr plusesurl=
+instr achievements=
+achievements_kitten=0
+achievements_wolf=0
+achievements_fish=0
+achievements_bees=0
+instr pichead=
+instr picleft=
+instr picright=
+stopfooddie=0
+instr action=
+instr quest=
+instr arealoc=
+proc name
+instr ggname=#%s$ич
+proc name
+instr shamanname=#%s$ан
+pln Когда #%ggname$ родился, шаман #%shamanname$ взял его на руки и предсказал, что когда #%ggname$ вырастет, он будет:
+btn gen_strdex, Сильным и ловким
+btn gen_strint, Сильным и горлатым
+btn gen_dexint, Ловким и горлатым
+btn gen_str, Очень сильным
+btn gen_dex, Очень ловким
+btn gen_int, Очень горлатым
+btn gen_nightmare, Красивым
+btn gen_rich, Богатым
+end
+
+
+:name
+instr s=
+jname=rnd6
+jname=jname+2
+iname=1
+proc capletter
+instr s=#%s$#%c$
+:count_letter
+proc letter
+instr s=#%s$#%c$
+iname=iname+1
+if iname<jname then goto count_letter
+end
+
+:letter
+rlet=rnd20
+if rlet=1 then instr c=й
+if rlet=2 then instr c=ц
+if rlet=3 then instr c=к
+if rlet=4 then instr c=н
+if rlet=5 then instr c=г
+if rlet=6 then instr c=ш
+if rlet=7 then instr c=щ
+if rlet=8 then instr c=з
+if rlet=9 then instr c=х
+if rlet=10 then instr c=ъ
+if rlet=11 then instr c=ф
+if rlet=12 then instr c=ы
+if rlet=13 then instr c=в
+if rlet=14 then instr c=п
+if rlet=15 then instr c=р
+if rlet=16 then instr c=л
+if rlet=17 then instr c=д
+if rlet=18 then instr c=ж
+if rlet=19 then instr c=ч
+if rlet=20 then instr c=с
+if rlet=21 then instr c=м
+if rlet=22 then instr c=т
+if rlet=23 then instr c=ь
+if rlet=24 then instr c=б
+end
+
+
+:capletter
+rlet=rnd20
+if rlet=1 then instr c=Й
+if rlet=2 then instr c=Ц
+if rlet=3 then instr c=К
+if rlet=4 then instr c=Н
+if rlet=5 then instr c=Г
+if rlet=6 then instr c=Ш
+if rlet=7 then instr c=Щ
+if rlet=8 then instr c=З
+if rlet=9 then instr c=Х
+if rlet=10 then instr c=Ъ
+if rlet=11 then instr c=Ф
+if rlet=12 then instr c=Ы
+if rlet=13 then instr c=В
+if rlet=14 then instr c=П
+if rlet=15 then instr c=Р
+if rlet=16 then instr c=Л
+if rlet=17 then instr c=Д
+if rlet=18 then instr c=Ж
+if rlet=19 then instr c=Ч
+if rlet=20 then instr c=С
+if rlet=21 then instr c=М
+if rlet=22 then instr c=Т
+if rlet=23 then instr c=Ь
+if rlet=24 then instr c=Б
+end
+
+:color
+r=rnd6
+if r=1 then instr color=желтого
+if r=2 then instr color=красного
+if r=3 then instr color=синего
+if r=4 then instr color=зеленого
+if r=5 then instr color=голубого
+if r=6 then instr color=розового
+colornum=r
+end
+
+:gen_str
+instr pichead=facestr
+str=150
+int=50
+dex=50
+goto start
+
+:gen_dex
+instr pichead=facedex
+str=50
+int=50
+dex=150
+goto start
+
+:gen_int
+instr pichead=faceint
+str=50
+int=150
+dex=50
+goto start
+
+:gen_strdex
+instr pichead=facestrdex
+str=100
+int=50
+dex=100
+goto start
+
+:gen_strint
+instr pichead=facestrint
+str=100
+int=100
+dex=50
+goto start
+
+:gen_dexint
+instr pichead=faceintdex
+str=50
+int=100
+dex=100
+goto start
+
+:gen_nightmare
+instr pichead=facecha
+beautiful=1
+str=75
+int=75
+dex=75
+goto start
+
+:gen_rich
+instr pichead=facerich
+rich=1
+sticks=2
+rocks=2
+axe=1
+spear=1
+skin=1
+str=65
+int=65
+dex=65
+goto start
+
+
+:header
+if int<=0 then int=1
+if dex<=0 then dex=1
+if str<=0 then str=1
+instr msg=
+if stopfooddie=0 then food=food-2-rnd6
+if food<0 and rocks>0 then food = food+6*rocks+rnd6+rnd6&rocks=0&instr msg=Чтоб не умереть с голоду, #%ggname$ сожрал все камни. У #%ggname$ больше нет камней.
+if food<0 and sticks>0 then food= food+16*sticks+rnd6+rnd6&sticks=0&instr msg=Чтоб не умереть с голоду, #%ggname$ сожрал все палки. У #%ggname$ больше нет палок.
+if food<0 and spear>0 then food= food+26*spear+rnd6+rnd6&spear=0&instr msg=Чтоб не умереть с голоду, #%ggname$ сожрал все копья. У #%ggname$ больше нет копий.
+if food<0 and skin>0 then food= food+36*skin+rnd6+rnd6&skin=0&instr msg=Чтоб не умереть с голоду, #%ggname$ сожрал все шкуры. У #%ggname$ больше нет шкур.
+if food<0 and axe>0 then food= food+36*axe+rnd6+rnd6&axe=0&instr msg=Чтоб не умереть с голоду, #%ggname$ сожрал все топоры. У #%ggname$ больше нет топоров.
+maxhealth=str
+if health<maxhealth and stopfooddie=0 then health=health+1
+if rocks=0 then instr str_rocks=нет
+if rocks=1 then instr str_rocks=один
+if rocks=2 then instr str_rocks=пара
+if rocks>2 then instr str_rocks=много
+;p  и
+if sticks=0 then instr str_sticks=нет
+if sticks=1 then instr str_sticks=одна
+if sticks=2 then instr str_sticks=пара
+if sticks>2 then instr str_sticks=много
+instr str_weapon=
+if spear=0 and axe=0 and sticks=0 then instr str_weapon=ничего
+if spear=0 and axe=0 and sticks>0 then instr str_weapon=дубина
+if spear>0 and axe=0 then instr str_weapon=#%str_weapon$копье
+if axe>0 and spear=0 then instr str_weapon=#%str_weapon$топор +#axe$
+if spear>0 and axe>0 then instr str_weapon=#%str_weapon$копье и топор +#axe$
+
+
+1_<div class="col-sm-6" align=right><table>
+_ <tr><td>HitP:</td><td><progress color="red" max="#maxhealth$" value="#health$"></progress></td></tr>
+_ <tr><td>Food:</td><td><progress color="red" max="100" value="#food$"></progress></td></tr>
+_ <tr><td>Квест</td><td>#%quest$</td></tr>
+_ </table></div>
+
+instr picleft=handleft
+instr picright=handright
+if spear>0 then instr picright=spear
+if sticks>0 then instr picleft=club
+if axe>0 then instr picleft=axe
+
+if skin=0 then instr skinstr=display:none
+if skin=1 then instr skinstr=
+pln <style>.imgchar { position: absolute;width:110px;top:-10px;}</style>
+_<style>.imgchar2 { position: absolute;width:265px;top:-10px;}</style>
+_<div class="col-sm-4" align=left>В руках: #%str_weapon$ </div>
+_<div class="col-sm-4" align= center>#%areaname$ #score$/#step$</div>
+_<div class="col-sm-4" align=right>Камней: #%str_rocks$ Палок:#%str_sticks$</div>
+_<div class="char col-sm-2" align=left>
+_<img class=imgchar style="z-index:8" src=http://pavlenko.biz/urq/quests/pics/#%pichead$.png>
+_<img class=imgchar style="z-index:7;#%skinstr$" src=http://pavlenko.biz/urq/quests/pics/skintop.png>
+_<img class=imgchar style="z-index:-6" src=http://pavlenko.biz/urq/quests/pics/#%picleft$.png>
+_<img class=imgchar style="z-index:-15" src=http://pavlenko.biz/urq/quests/pics/#%picright$.png>
+_<img class=imgchar style="z-index:-24" src=http://pavlenko.biz/urq/quests/pics/body.png>
+_<img class=imgchar style="z-index:-33;#%skinstr$" src=http://pavlenko.biz/urq/quests/pics/skinbottom.png>
+_</div>
+_<div class="col-sm-10">
+_<div class="col-sm-6">
+_<div class="col-sm-3">СИЛ</div><div class="col-sm-9"><progress max="200" value="#str$"></progress></div>
+_<div class="col-sm-3">ЛОВ</div><div class="col-sm-9"><progress max="200" value="#dex$"></progress></div>
+_<div class="col-sm-3">ГОР</div><div class="col-sm-9"><progress max="200" value="#int$"></progress></div>
+_</div>
+_<div class="col-sm-6">
+_<div class="col-sm-3">Жизни</div><div class="col-sm-9"><progress color="red" max="#maxhealth$" value="#health$"></progress></div>
+_<div class="col-sm-3">Пища</div><div class="col-sm-9"><progress color="red" max="100" value="#food$"></progress></div>
+_<div class="col-sm-3">Квест</div><div class="col-sm-9">#%quest$</div>
+_</div>
+if battle=1 and enemyhp>=0 then pln <center>#%enemyname$: <progress max="#enemyhpmax$" value="#enemyhp$"></progress></center>
+pln
+if ent>0 and ggtop=0 then pln  С собой #%ggname$ несет бревно, которое раньше было древнем #%entname$.
+if ent>0 and ggtop>0 then pln  Рядом с #%ggname$ем лежит бревно, которое раньше было древнем #%entname$.
+entstep=entstep+1
+if entintro=1 then entintro=2&entstep=14
+if ent>0 and entstep=1 then pln - Грязный варвар! - ругается #%entname$. - Немедленно отнеси меня обратно в лес.
+if ent>0 and entstep=2 then pln - Животное! - ругается #%entname$. - Перестань разрушать природу!
+if ent>0 and entstep=3 then pln - Чудовище! - ругается #%entname$. - Оторванные тобой ветколапы отрастут теперь нескоро!
+if ent>0 and entstep=4 then pln - Неандерталец! - ругается #%entname$. - Из-за таких как ты все в упадке и мы до сих пор в каменном веке!
+if ent>0 and entstep=5 then pln - Пещерный человек! - ругается #%entname$. - Отправляйся назад в свою пещеру!
+if ent>0 and entstep=6 then pln - Необразованная тварь! - ругается #%entname$. - Ты не способен создать ничего сложнее каменного копья!
+if ent>0 and entstep>6 and entstep<>14 then pln #%entname$ презрительно молчит.
+if entstep>12 then entstep=0
+pln #%msg$
+pln #%action$
+if food<=0 then goto fooddie
+if health<=0 then goto healthdie
+end
+
+:fooddie
+pln #%ggname$ умер от голода!
+instr deathstr=Умер от голода в #%areaname$.
+goto postresult
+quit
+end
+
+:healthdie
+pln #%ggname$ умер от полученных ран!
+if deathstr="" then instr deathstr=Умер от полученных ран в #%areaname$.
+goto postresult
+
+:postresult
+subscore=score*1000+str*3+dex*3+int*3-step+rocks*10+sticks*10+axe*100+spear*100
+if achievements_wolf=1 and achievements_fish=1 then instr achievements=#%achievements$ Друг всех зверей!
+if achievements_wolf=1 and achievements_fish=0 then instr achievements=#%achievements$ Друг волков.
+if achievements_wolf=0 and achievements_fish=1 then instr achievements=#%achievements$ Друг рыб.
+if achievements_wolf=2 and achievements_fish=2 then instr achievements=#%achievements$ Враг всех зверей!
+if achievements_wolf=2 and achievements_fish=0 then instr achievements=#%achievements$ Враг волков.
+if achievements_wolf=0 and achievements_fish=2 then instr achievements=#%achievements$ Враг рыб.
+if achievements_kitten=1 then instr achievements=#%achievements$ Спаситель котят.
+if achievements_bees=1 then instr achievements=#%achievements$ Пожиратель пчел.
+if achievements_bees=2 then instr achievements=#%achievements$ Пчеловод.
+if achiviements_deadgirl=1 then instr achievements=#%achievements$ Обнимал женщину.
+if pit>0 then instr achievements=#%achievements$ Зарыл #pit$ ям.
+if dig>0 then instr achievements=#%achievements$ Вырыл #dig$ ям.
+p <img style="display:none" src="http://pavlenko.biz/urq/leaderboard2/test.php?post=#%ggname$#%plusesurl$|#%subscore$|#%achievements$ #%deathstr$|#%pichead$">
+pln
+pln Посмотреть итоговую таблицу:
+pln <a href="http://pavlenko.biz/urq/leaderboard2/">http://pavlenko.biz/urq/leaderboard2/</a>
+quit
+end
+
+:kustdie
+pln #%ggname$ отравился ягодами #%color$ цвета и мгновенно издох!
+instr deathstr=Отравился ягодами #%color$ цвета в #%areaname$.
+goto postresult
+end
+
+:pooldie
+pln #%ggname$ отравился водой #%color$ цвета и тут же издох!
+instr deathstr=Отравился водой #%color$ цвета в #%areaname$.
+goto postresult
+end
+
+:poolgoatdie
+pln #%ggname$ испил из лужи #%color$ цвета и превратился в козла. На этом его злоключения закончились.
+instr deathstr=Превратился в козла.
+goto postresult
+end
+
+
+:start
+health=str
+maxhealth=str
+food=30
+instr areaname = Побережье
+instr quest = Найти плот
+proc header
+if rich=0 then pln #%ggname$ плыл на плоту, но плот перевернулся. Все камни пропали, все шкуры пропали. #%ggname$а выбросило на берег. #%ggname$ осмотрелся вокруг: побережье.
+if rich=1 then pln #%ggname$ плыл на плоту, но плот перевернулся. Все женщины пропали, все невольники пропали, нажитый непосильным трудом паланкин... #%ggname$а выбросило на берег. #%ggname$ осмотрелся вокруг: побережье.
+pln "#%ggname$!", подумал #%ggname$. Что означало: "Я верну плот!"
+btn area1, Идти вперед
+end
+
+;-----------AREA 1  Побережье
+
+
+:area1
+instr areaname = Побережье
+instr arealoc=area1
+step=step+1
+proc header
+r=rnd11
+if step=9 then goto area1_5
+if step=14 then goto area1_3
+if step>=steps then goto area1_final
+goto area1_#r$
+end
+
+:area1_1
+pln #%ggname$ видит пальму.
+btn area1_lookpalm, Осмотреть
+btn area1_eatpalm, Сожрать
+btn area1_breakpalm, Шатать
+end
+
+:area1_2
+pln #%ggname$ видит песок.
+btn area1_looksand, Осмотреть
+btn area1_eatsand, Сожрать
+btn area1_digsand, Копать
+end
+
+:area1_3
+pln #%ggname$ видит палку.
+btn area1_lookstick, Осмотреть
+btn area1_eatstick, Сожрать
+btn area1_breakstick, Сломать
+end
+
+:area1_4
+pln #%ggname$ видит березку.
+btn area1_looktree, Осмотреть
+btn area1_eattree, Сожрать
+btn area1_breaktree, Шатать
+end
+
+:area1_5
+pln #%ggname$ видит камень.
+btn area1_lookrock, Осмотреть
+btn area1_eatrock, Сожрать
+btn area1_breakrock, Сломать
+end
+
+:area1_6
+pln #%ggname$ видит краба.
+btn area1_talkcrab, Осмотреть
+btn area1_eatcrab, Сожрать
+btn area1_hugcrab, Обнять
+end
+
+:area1_7
+proc color
+pln #%ggname$ видит лужу с водицей #%color$ цвета.
+btn area1_lookpool, Осмотреть
+btn area1_drinkpool, Испить
+btn area1_breakpool, Топтать
+end
+
+:area1_8
+pln #%ggname$ видит бревно.
+btn area1_lookbrevno, Осмотреть
+btn area1_eatbrevno, Сожрать
+btn area1_breakbrevno, Сломать
+end
+
+:area1_9
+pln #%ggname$ видит потухший костер.
+btn area1_lookfire, Осмотреть
+btn area1_lightfire, Разжечь
+btn area1_craftfire, Творить
+end
+
+:area1_10
+pln #%ggname$ видит рыбу.
+btn area1_talkfish, Говорить
+if spear=0 then btn area1_eatfish, Сожрать
+if spear>0 then btn area1_spearfish, Пронзить
+btn area1_hugfish, Обнять
+end
+
+:area1_11
+pln #%ggname$ видит яму.
+btn area1_lookpit, Осмотреть
+btn area1_droppit, Упасть
+btn area1_digpit, Зарыть
+end
+
+:area1_12
+pln #%ggname$ видит женщину накрытую шкурой.
+btn area1_lookdeadgirl, Осмотреть
+btn area1_takedeadgirl, Отнять
+btn area1_hugdeadgirl, Обнять
+end
+
+:area1_13
+proc color
+pln #%ggname$ видит куст с ягодами #%color$ цвета.
+btn area1_lookkust, Осмотреть
+btn area1_eatkust, Сожрать
+btn area1_breakkust, Сломать
+end
+
+:area1_14
+proc name
+instr vendorname=#%s$ец
+pln #%ggname$ видит бродячего менялу #%vendorname$а.
+btn area1_talkvendor, Говорить
+btn area1_kickvendor, Вломить
+btn area1_tradevendor, Менять
+end
+
+:area1_talkvendor
+int=int+rnd6
+if int<=125 then instr action="#%ggname$!" сказал #%ggname$. #%vendorname$ рассказал #%ggname$у про прекрасные дальние земли и другие острова которые он посетил.&goto #%arealoc$
+if int>125 then instr action="#%ggname$!" крикнул #%ggname$. #%vendorname$ испугался и ринулся наутек, со всеми своими товарами.
+r=rnd6
+if r=1 then rocks=rocks+1&instr action=#%action$ На земле #%ggname$ нашел потеряный #%vendorname$ом камень, и взял его с собой.
+if r=2 then sticks=sticks+1&instr action=#%action$ На земле #%ggname$ нашел потеряную #%vendorname$ом палку, и взял ее с собой.
+if r=3 then spear=spear+1&instr action=#%action$ На земле #%ggname$ нашел потеряное #%vendorname$ом копье, и взял его с собой.
+if r=4 then axe=1&instr action=#%action$ На земле #%ggname$ нашел потеряный #%vendorname$ом каменный топор +1, и взял его с собой.
+if r=5 then skin=skin+1&instr action=#%action$ На земле #%ggname$ нашел потеряную #%vendorname$ом шкуру, и взял ее с собой.
+if r=6 then axe=2&instr action=#%action$ На земле #%ggname$ нашел потеряный #%vendorname$ом каменный топор +2, и взял его с собой.
+goto #%arealoc$
+
+:area1_kickvendor
+str=str+rnd6
+if str>=125 then health=health-25-rnd50&spear=spear+1&instr action=#%ggname$ хотел было вломить #%vendorname$у, но меняла метнул в #%ggname$а копьем. Копье проткнуло #%ggname$а насквозь! Повсюду кровь! У #%ggname$ теперь есть копье! #%vendorname$ куда-то скрылся.
+if str<125 then health=health-rnd6&rocks=rocks+1&instr action=#%ggname$ хотел было вломить #%vendorname$у, но меняла кинул в #%ggname$а камнем. Камень ударился #%ggname$у прямо в лоб! Звезды перед глазами! #%ggname$ забрал камень себе. А #%vendorname$ куда-то скрылся.
+goto #%arealoc$
+
+:area1_tradevendor
+dex=dex+rnd6
+instr deathstr=Убит бродячим менялой #%vendorname$ом.
+instr action="#%ggname$!" сказал #%ggname$. "#%vendorname$!", ответил #%vendorname$.
+if rocks=0 and sticks=0 and axe=0 and spear=0 and skin=0 then instr action=#%action$ После чего парни разошлись в разные стороны.&goto #%arealoc$
+if rich=1 and rocks=0 and sticks>0 then sticks=sticks-1&instr action=#%action$ #%ggname$ положил на землю одну палку.
+if rich=1 and rocks>0 then rocks=rocks-1&instr action=#%action$ #%ggname$ положил на землю один камень.
+if rich=0 and rocks>0 then rocks=0&instr action=#%action$ #%ggname$ положил на землю все свои камни.
+if rich=0 and sticks>0 then sticks=0&instr action=#%action$ #%ggname$ положил на землю все свои палки.
+if rich=0 and spear>0 then spear=0&instr action=#%action$ #%ggname$ положил на землю все свои копья.
+if rich=0 and skin>0 then skin=0&instr action=#%action$ #%ggname$ положил на землю все свои шкуры.
+if rich=0 and axe>0 then axe=0&instr action=#%action$ #%ggname$ положил на землю топор+#axe@.
+r=rnd6
+if r=1 then rocks=rocks+1&instr action=#%action$ #%vendorname$ положил на землю один камень.
+if r=2 then sticks=sticks+1&instr action=#%action$ #%vendorname$ положил на землю одну палку.
+if r=3 then spear=spear+1&instr action=#%action$ #%vendorname$ положил на землю копье.
+if r=4 then axe=1&instr action=#%action$ #%vendorname$ положил на землю топор+1.
+if r=5 then skin=skin+1&instr action=#%action$ #%vendorname$ положил на землю шкуру.
+if r=6 then axe=2&instr action=#%action$ #%vendorname$ положил на землю топор+2.
+instr action=#%action$ Парни похлопали друг друга по ягодицам, в знак того что обмен совершен, и забрали товары друг друга.
+goto #%arealoc$
+
+
+:area1_lookdeadgirl
+health=health-rnd6
+instr deathstr=Осмотрел женщину.
+if beautiful=0 then instr action=#%ggname$ не сомневаясь сразу сунул палец женщине между ног. Женщина отвесила #%ggname$у звонкую пощечину, а потом обиделась и ушла.
+if beautiful=1 then achiviements_deadgirl=1&skin=skin+1&instr action=#%ggname$ не сомневаясь сразу сунул палец женщине между ног. Женщина обняла #%ggname$а, а потом подарила ему шкуру.
+goto #%arealoc$
+
+:area1_takedeadgirl
+skin=skin+1
+str=str+rnd6
+instr action=#%ggname$ крупней и сильней, потому он без труда снял с женщины шкуру и пошел себе дальше. Женщина недовольна. У #%ggname$ теперь есть шкура!
+goto #%arealoc$
+
+:area1_hugdeadgirl
+achiviements_deadgirl=1
+dex=dex+rnd6
+instr action=#%ggname$ обнял женщину, а та обняла #%ggname$а! С женщиной тепло и приятно, понял #%ggname$. Когда #%ggname$ проснулся утром, женщина уже куда-то ушла.
+r=rnd6
+if beautiful=1 then r=6
+if r=1 and rocks>0 then rocks=0&instr action=#%action$ Вместе с ней пропали и все нажитые непосильным трудом камни #%ggname$а.
+if r=2 and sticks>0 then sticks=0&instr action=#%action$ Вместе с ней пропали и все нажитые непосильным трудом палки #%ggname$а.
+if r=3 and spear>0 then spear=0&instr action=#%action$ Вместе с ней пропали и все нажитые непосильным трудом копья #%ggname$а.
+if r=4 and axe>0 then axe=0&instr action=#%action$ Вместе с ней пропали и все нажитые непосильным трудом топоры #%ggname$а.
+if r=5 and skin>0 then skin=0&instr action=#%action$ Вместе с ней пропали и все нажитые непосильным трудом шкуры #%ggname$а.
+if r=6 and skin=0 then skin=1&instr action=#%action$ Рядом с #%ggname$ом лежала заботливо оставленная женщиной шкура. Шкуру #%ggname$ взял с собой.
+goto #%arealoc$
+
+:area1_lookpit
+instr action=#%ggname$ посмотрел внутрь ямы, но ничего не увидел потому что внутри ямы было темно!
+goto #%arealoc$
+
+:area1_droppit
+health=health-rnd6-2
+instr deathstr=Неудачно упал в яму.
+rocks=rocks+1
+instr action=#%ggname$ упал внутрь ямы и больно ударился головой о камень!
+if health>0 then instr action=#%action$ Камень завсегда пригодится! #%ggname$ взял камень с собой.
+goto #%arealoc$
+
+:area1_digpit
+str=str+rnd6
+pit=pit+1
+instr action=#%ggname$ зарыл яму, чтоб никто туда не упал.
+goto #%arealoc$
+
+
+:area1_lookkust
+instr action=#%ggname$ осмотрел куст и узнал что ягоды #%color$ цвета
+if colornum=1 then instr action=#%action$ востанавливают здоровье.
+if colornum=2 then instr action=#%action$ ядовиты и противны.
+if colornum=3 then instr action=#%action$ увеличивают силу.
+if colornum=4 then instr action=#%action$ увеличивают ловкость.
+if colornum=5 then instr action=#%action$ утоляют голод.
+if colornum=6 then instr action=#%action$ делают горлатей.
+goto #%arealoc$
+
+:area1_eatkust
+instr action=#%ggname$ сожрал куст с ягодами #%color$ цвета.
+if colornum=1 then health=maxhealth&instr action=#%action$ #%ggname$ чувствует себя здоровым!
+if colornum=2 then goto kustdie
+if colornum=3 then food=food+30&str=str-rnd6&instr action=#%action$ #%ggname$ наелся, но почувствовал что стал слабее.
+if colornum=4 then food=food+30&dex=dex-rnd6&instr action=#%action$ #%ggname$ наелся, но почувствовал что стал менее ловким.
+if colornum=5 then food=food+30+rnd6+rnd6&instr action=#%action$ #%ggname$ утолил голод.
+if colornum=6 then food=food+30&int=int-rnd6&instr action=#%action$ #%ggname$ наелся, но почувствовал как в горле запершило.
+goto #%arealoc$
+
+
+:area1_breakkust
+str=str+rnd6
+instr action=#%ggname$ вырвал куст из земли и выкинул. Потому что #%ggname$ сильный, потому что #%ggname$ может.
+goto #%arealoc$
+
+
+:area1_talkfish
+int=int+rnd6
+if int<=125 then instr action="#%ggname$!", сказал #%ggname$. Рыба в ответ промолчала.
+if int>125 then food=100&achievements_fish=2&instr action="#%ggname$!", заорал #%ggname$. Рыба всплыла и #%ggname$ ее сожрал. Вкусно!
+goto #%arealoc$
+
+:area1_eatfish
+dex=dex+rnd6
+if dex<100 then instr action=#%ggname$ хотел сожрать рыбу, но оказался недостаточно ловким чтоб ее поймать.
+if dex>=100 then food=100&instr action=#%ggname$ поймал рыбу и сожрал ее. #%ggname$ теперь сыт!
+goto #%arealoc$
+
+:area1_spearfish
+dex=dex+rnd6
+food=100&instr action=#%ggname$ пронзил рыбу своим копьем и сожрал ее. #%ggname$ теперь сыт!
+goto #%arealoc$
+
+
+:area1_hugfish
+dex=dex+rnd6
+if dex<100 then instr action=#%ggname$ хотел обнять рыбу, но оказался недостаточно ловким чтоб ее поймать.
+if dex>=100 then achievements_fish=1&int=int+1&instr action=#%ggname$ поймал и обнял рыбу. Рыба скользкая! #%ggname$ теперь тоже скользкий! Рыба и #%ggname$ теперь друзья.
+goto #%arealoc$
+
+
+:area1_lookbrevno
+if ent=0 then instr action=#%ggname$ посмотрел на бревно, и подумал "#%ggname$?", что означало: "Нахрена мне оно?". После чего пошел дальше.
+if ent=1 then instr action=#%ggname$ критически осмотрел новое бревно, и подумал "#%ggname$?", что означало: "Зачем мне бревно, если у меня уже есть #%entname$?"
+goto #%arealoc$
+
+:area1_eatbrevno
+food=food+30+rnd6+rnd6
+instr action=#%ggname$ быстро сожрал бревно и пошел дальше.
+goto #%arealoc$
+
+:area1_breakbrevno
+str=str+rnd6
+if str>100 then str=str+1&instr action=#%ggname$ поднатужился и разломал бревно пополам. #%ggname$ доволен собой.
+if str<=100 then str=str-1&instr action=#%ggname$ долго старался, но бревно оказалось слишком крепким, и он не смог его сломать. #%ggname$ недоволен собой.
+goto #%arealoc$
+
+:area1_lookfire
+instr action=#%ggname$ осмотрел костер и узнал, что костры разжигают чтобы согреться и востановить здоровье, а еще у костра можно творить каменные копья и другие прекрасные вещи.
+goto #%arealoc$
+
+:area1_lightfire
+if sticks<2 then instr action=#%ggname$у нужна как минимум пара палок, чтобы возжечь костер.
+if sticks>=2 then health=maxhealth&instr action=Использовав пару палок, #%ggname$ разжег костер. Согревшись у костра #%ggname$ почувствовал себя свежим и отдохнувшим.
+if sticks=2 then sticks=0
+goto #%arealoc$
+
+:area1_breakfire
+str=str+rnd6
+instr action=#%ggname$ затоптал потухший костер. #%ggname$ сильный и красивый.
+goto #%arealoc$
+
+:area1_craftfire
+if dex>100 and rocks>0 and sticks>0 and spear>0 and axe=0 then sticks=sticks-1&rocks=rocks-1&axe=1&instr action=Из камня и палки #%ggname$ создал каменный топор!&goto #%arealoc$
+if dex<=100 and rocks>0 and sticks>0 and spear>0 and axe=0 then instr action=#%ggname$ хотел создать каменный топор, но оказалось что он недостаточно ловкий и у него не вышло.&goto #%arealoc$
+if dex>75 and rocks>0 and sticks>0 and spear=0 then sticks=sticks-1&rocks=rocks-1&spear=1&instr action=Из камня и палки #%ggname$ создал каменное копье!&goto #%arealoc$
+if dex<=75 and rocks>0 and sticks>0 and spear=0 then instr action=#%ggname$ хотел создать каменное копье, но оказалось что он недостаточно ловким и у него не вышло.&goto #%arealoc$
+if rocks=0 and sticks=0 then instr action=У #%ggname$а не достаточно камней и палок, чтобы сотворить что-то новое.&goto #%arealoc$
+instr action=У #%ggname$а уже и так есть все, что можно создать у костра.
+goto #%arealoc$
+
+
+:area1_lookpool
+int=int+rnd6
+instr action=#%ggname$ посмотрел в лужу и увидел #%ggname$. "#%ggname$!" сказал #%ggname$.
+goto #%arealoc$
+
+:area1_drinkpool
+health=health-10-rnd6-rnd6-rnd6
+instr deathstr=Выпил из лужи.
+int=int+rnd6
+instr action=#%ggname$ испил из лужи с водой #%color$ цвета. Горлу приято.
+if colornum=1 then health=maxhealth&instr action=#%action$ #%ggname$ чувствует себя здоровым!
+if colornum=2 then goto pooldie
+if colornum=3 then goto poolgoatdie
+if colornum=4 then str=str+rnd6&instr action=#%action$ #%ggname$ чувствует себя сильнее!
+if colornum=5 then food=100&instr action=#%action$ #%ggname$ насытился.
+if colornum=6 then dex=dex+rnd6&instr action=#%action$ #%ggname$ чувствует себя более ловким.
+goto #%arealoc$
+
+:area1_breakpool
+str=str+rnd6
+instr action=#%ggname$ потоптался в луже и намочил ножки, потому что лужа мокрая.
+goto #%arealoc$
+
+:area1_talkcrab
+int=int+rnd6
+if int<=100 then instr action="#%ggname$!", сказал #%ggname$. "Клац-клац", ответил краб.
+if int>100 then instr action="#%ggname$!", крикнул #%ggname$. "Клац-клац", ответил краб.
+goto #%arealoc$
+
+:area1_eatcrab
+food=food+rnd6+36
+instr action=#%ggname$ сожрал краба. Ням!
+goto #%arealoc$
+
+:area1_hugcrab
+health=health-rnd6-rnd6
+dex=dex+rnd6
+instr deathstr=Был укушен за сосок крабом.
+instr action=#%ggname$ попытался обнять краба, но краб укусил #%ggname$а за сосок. Больно.
+goto #%arealoc$
+
+
+
+:area1_lookrock
+rocks=rocks+1
+instr action=#%ggname$ решил что камень ему пригодится и он взял его с собой.
+goto #%arealoc$
+
+:area1_eatrock
+food=food+rnd6+6
+instr action=#%ggname$ сожрал камень. Не особо!
+goto #%arealoc$
+
+:area1_breakrock
+str=str+rnd6
+instr action=#%ggname$ разломал камень пополам и стал гордый.
+goto #%arealoc$
+
+:area1_lookstick
+sticks=sticks+1
+instr action=#%ggname$ решил что палка ему пригодится и он взял ее с собой.
+goto #%arealoc$
+
+:area1_eatstick
+food=food+rnd6+16
+instr action=#%ggname$ сожрал палку. Ничо!
+goto #%arealoc$
+
+:area1_breakstick
+str=str+rnd6
+instr action=#%ggname$ разломал палку пополам и пошел.
+goto #%arealoc$
+
+:area1_looktree
+instr action=#%ggname$ посмотрел на дерево. Березка, красиво. И пошел дальше.
+goto #%arealoc$
+
+:area1_eattree
+food=food+rnd6+26
+instr action=#%ggname$ сожрал березку. Вкусно! Даже сок по скулам потек.
+goto #%arealoc$
+
+:area1_breaktree
+sticks=sticks+1
+health=health-rnd6
+instr deathstr=Пошатал дерево и убился об палку.
+instr action=#%ggname$ пошатал дерево, и ему на голову упала палка. Палку #%ggname$ взял с собой.
+goto #%arealoc$
+
+:area1_lookpalm
+instr action=#%ggname$ посмотрел на пальму. Где-то сверху на ней растет кокос.
+goto #%arealoc$
+
+:area1_eatpalm
+food=food+rnd6+16
+instr action=#%ggname$ сожрал пальму вместе с листьями. Так себе.
+goto #%arealoc$
+
+:area1_breakpalm
+health=health-rnd6-rnd6
+instr deathstr=Уронил себе на голову кокос.
+food=food+rnd6+26
+instr action=#%ggname$ пошатал пальму, и ему на голову упал кокос. Кокос слегка проломил #%ggname$у голову и раскололся пополам. #%ggname$ сожрал кокос. Вкусно.
+goto #%arealoc$
+
+
+:area1_looksand
+rocks=rocks+1
+instr action=#%ggname$ посмотрел на песок и нашел в песке камень!
+goto #%arealoc$
+
+:area1_eatsand
+food=food+rnd6
+instr action=#%ggname$ сожрал горсть песка. Совсем невкусно.
+goto #%arealoc$
+
+:area1_digsand
+str=str+rnd6
+food=food+rnd6+rnd6
+dig=dig+1
+instr action=#%ggname$ быстро вырыл огромную яму в песке, нашел воду и утолил жажду!
+goto #%arealoc$
+
+
+;-------------------- AREA 1 Boss Battle
+
+:area1_final
+score=score+1
+proc name
+instr enemyname=#%s$аг
+instr action=#%ggname$ видит #%enemyname$а и плот.
+_<br> - #%ggname$! - сказал #%ggname$. Что означало: "Это мой плот!".
+_<br> - #%enemyname$! - сказал #%enemyname$. Что означало: "Это мой плот!".
+pln #%action$
+stopfooddie=1
+battle=1
+enemyhp=300+(pluseshp*25)
+enemyhpmax=300+(pluseshp*25)
+ggtop=0
+hidebuttons=0
+btn area1boss, Начать дуэль!
+end
+
+:area1boss
+step=step+1
+instr arealoc=area1boss
+instr winloc=area1win
+if ggtop=0 and health>=0 and enemyhp>=0 then instr action=#%action$<br>#%enemyname$ преграждает путь к плоту!
+if ggtop=1 and health>=0 and enemyhp>=0 then instr action=#%action$<br>#%ggname$ сидит на #%enemyname$е!
+if ggtop=2 and health>=0 and enemyhp>=0 then instr action=#%action$<br>#%ggname$ лежит под #%enemyname$ом! #%ggname$у немножко неприятно!
+proc header
+if enemyhp<0 then goto area1win
+;pln #%enemyname$ настроен весьма агрессивно.
+if hidebuttons=1 then end
+if ggtop<>2 and spear>0 then btn area1boss_kick, Пронзить
+if ggtop<>2 and spear=0 then btn area1boss_kick, Вломить
+if ggtop=2 then btn area1boss_kick, Кусать
+if ggtop<>2 then btn area1boss_talk, Говорить
+if ggtop=2 then btn area1boss_oh, Стонать
+if ggtop=0 then btn area1boss_hug, Обнять
+if ggtop=1 then btn area1boss_stand, Встать
+if ggtop=2 then btn area1boss_choke, Лежать
+end
+
+:area1boss_kick
+instr deathstr=Получил по лицу от #%enemyname$.
+if ggtop=0 and spear=0 then health=health-rnd6-rnd6-rnd6&enemyhp=enemyhp-rnd#str$-axe*50&instr action=#%ggname$ от души врезал #%enemyname$у. В ответ, #%enemyname$ от души врезал #%ggname$у.
+if ggtop=1 and spear=0 then enemyhp=enemyhp-rnd#str$-axe*50-axe*50-rnd#str$-50&instr action=#%ggname$ от души вломил #%enemyname$у когтями и локтями, разбил тому нос и сломал зуб.
+if ggtop<>2 and spear>0 then spear=spear-1&enemyhp=enemyhp-rnd#str$-rnd#dex$-150&instr action=#%ggname$ взял свое каменное копье, и с радостью вонзил его в #%enemyname$у. Копье проткнуло #%enemyname$а насквозь!
+if ggtop=2 then health=health-6-rnd6-rnd6&enemyhp=enemyhp-rnd#dex$&instr action=#%enemyname$ от души врезал #%ggname$у локтем. В ответ #%ggname$ укусил #%enemyname$а за левую ягодицу. #%enemyname$ взвыл от боли.
+goto #%arealoc$
+
+:area1boss_oh
+health=health-6-rnd6-rnd6
+instr deathstr=Получил от #%enemyname$ кулаком в глаз.
+instr action=Не реагируя на стоны #%ggname$а, #%enemyname$ съездил #%ggname$у кулаком в глаз.
+goto #%arealoc$
+
+:area1boss_stand
+ggtop=0
+instr action=#%ggname$ встал с #%enemyname$, чтоб все было по честному.
+goto #%arealoc$
+
+
+:area1boss_choke
+ggtop=0
+instr action=#%ggname$ расслабился и лег неподвижно как будто он мертвый. #%enemyname$ вломил #%ggname$у напоследок, и слез с него. Хитрость удалась!
+health=health-rnd6-rnd6-rnd6
+instr deathstr=Лег под #%enemyname$ как будто он мертвый.
+goto #%arealoc$
+
+:area1boss_hug
+instr action=#%ggname$ обнял #%enemyname$а, а #%enemyname$ обнял #%ggname$а. Они повалились на землю, и долго возились там.
+if dex>100 then goto area1boss_ggtop
+if dex<=100 then goto area1boss_enemytop
+goto #%arealoc$
+
+:area1boss_ggtop
+ggtop=1
+instr action=#%action$<br>В результате борьбы #%ggname$ оказался сверху. Хорошо.
+goto #%arealoc$
+
+:area1boss_enemytop
+ggtop=2
+instr action=#%action$<br>#%ggname$ оказался недостаточно ловким, и теперь он снизу. Снизу нравится не очень, когда на тебя сверху залез #%enemyname$!
+goto #%arealoc$
+
+:area1boss_talk
+r=rnd2
+if r=1 then instr action=- #%ggname$, - сказал #%ggname$.<br>- #%enemyname$! - ударил себя в грудь #%enemyname$.
+if r=2 then instr action=- #%ggname$, - сказал #%ggname$.<br>- #%enemyname$? - спросил #%enemyname$.
+hidebuttons=1
+question=r
+btn area1boss_talk1, #%ggname$!
+btn area1boss_talk2, #%ggname$?
+btn area1boss_talk3, #%ggname$...
+goto #%arealoc$
+
+:area1boss_talk1
+hidebuttons=0
+if int>=75 and question=1 then enemyhp=enemyhp-rnd#int$&instr action=Сраженный силой аргументов #%ggname$а, #%enemyname$ задумался.
+if int<75 and question=1 then health=health-rnd6-rnd6-6&instr action=#%enemyname$ услышал неуверенный тон #%ggname$а и тут же вломил ему под дых.
+if int>=125 and question=2 then health=health-rnd6-rnd6-6&instr action=#%enemyname$ услышал неуверенный тон #%ggname$а и тут же вломил ему под дых.
+if int<125 and question=2 then health=health-rnd6-rnd6-6&instr action=#%enemyname$ услышал неуверенный тон #%ggname$а и тут же вломил ему под дых.
+instr deathstr=Не нашел ответа на аргументы #%enemyname$.
+goto #%arealoc$
+
+:area1boss_talk2
+hidebuttons=0
+if int>=75 and question=2 then enemyhp=enemyhp-rnd#int$&instr action=Сраженный силой аргументов #%ggname$а, #%enemyname$ задумался.
+if int<75 and question=2 then health=health-rnd6-rnd6-6&instr action=#%enemyname$ услышал неуверенный тон #%ggname$а и тут же вломил ему под дых.
+if int>=125 and question=1 then health=health-rnd6-rnd6-6&instr action=#%enemyname$ услышал неуверенный тон #%ggname$а и тут же вломил ему под дых.
+if int<125 and question=1 then health=health-rnd6-rnd6-6&instr action=#%enemyname$ услышал неуверенный тон #%ggname$а и тут же вломил ему под дых.
+instr deathstr=Не нашел ответа на аргументы #%enemyname$.
+goto #%arealoc$
+
+:area1boss_talk3
+hidebuttons=0
+if int<125 then health=health-rnd6-rnd6-6&instr action=#%enemyname$ услышал неуверенный тон #%ggname$а и тут же вломил ему под дых.&instr deathstr=Не нашел ответа на аргументы #%enemyname$.
+if int>=125 then enemyhp=enemyhp-rnd#int$&instr action=Сраженный силой аргументов #%ggname$а, #%enemyname$ задумался.
+goto #%arealoc$
+
+
+:area1win
+score=score+1
+hidebuttons=0
+battle=0
+stopfooddie=0
+steps=step+7+rnd6
+instr arealoc=area2
+instr action=
+if ggtop<>1 then pln #%enemyname$ обиделся и ушел.
+if ggtop=1 then pln #%enemyname$ притворился мертвым, и #%ggname$ слез с него. Тогда #%enemyname$ неожиданно ожил и быстро убежал в сторону заката.
+ggtop=0
+pln #%ggname$ победил, теперь плот его. Однако осмотрев плот, #%ggname$ заметил, что в плоте не хватает одного бревна. Кроме того #%ggname$у понадобится чем-то привязать новое бревно к плоту.
+instr arealoc=area2
+btn area2, Идти в лес за бревном
+btn area1_lightfire, Разжечь костер
+btn area1_craftfire, Творить
+end
+
+
+;----------------------------- AREA 2
+
+:area2
+instr areaname = Лес
+step=step+1
+proc header
+r=rnd14
+if step>steps then goto area2_final
+if r=1 then goto area1_3
+if r=2 then goto area1_4
+if r=3 then goto area1_5
+if r=4 then goto area1_7
+if r=5 then goto area1_9
+if r=6 then goto area1_13
+if r=13 then goto area1_12
+if r=14 then goto area1_14
+goto area2_#r$
+end
+
+:area2_7
+pln #%ggname$ видит землю.
+btn area2_lookearth, Осмотреть
+btn area2_eatearth, Сожрать
+btn area2_digearth, Копать
+end
+
+:area2_8
+pln #%ggname$ видит дуб. Дуб слишком крупный и твердый, чтобы #%ggname$ мог его сожрать.
+btn area2_lookearth, Осмотреть
+btn area2_climbdub, Залезть
+btn area2_breakdub, Шатать
+end
+
+:area2_9
+pln #%ggname$ видит дупло с пчелами.
+if int<=100 then btn area2_lookbees, Осмотреть
+if int>100 then btn area2_talkbees, Кричать
+btn area2_eatbees, Сожрать
+btn area2_breakbees, Шатать
+end
+
+:area2_10
+pln #%ggname$ видит волка.
+btn area2_talkwolf, Говорить
+btn area2_eatwolf, Сожрать
+btn area2_hugwolf, Обнять
+end
+
+:area2_11
+pln #%ggname$ видит зайца.
+btn area2_talkhare, Говорить
+btn area2_eathare, Сожрать
+btn area2_hughare, Обнять
+end
+
+:area2_12
+pln #%ggname$ видит как на клен залез котенок, жалобно мяучит и не может самостоятельно спуститься вниз.
+btn area2_freekitten, Снять
+btn area2_climbkitten, Залезть
+btn area2_eatkitten, Шатать
+end
+
+:area2_freekitten
+achievements_kitten=1
+instr action=#%ggname$ снял котенка с клена и пошел дальше по своим делам.
+goto #%arealoc$
+
+:area2_climbkitten
+dex=dex+rnd6
+if dex>50 then instr action=#%ggname$ ловко влез на клен, погладил котенка, и слез. Котенок поурчал.
+if dex><=0 then instr action=#%ggname$ оказался недостаточно ловким, чтобы влезть на клен.
+goto #%arealoc$
+
+:area2_eatkitten
+str=str+rnd6
+if str>=100 then food=food+50+rnd6+rnd6&instr action=#%ggname$ пошатал клен и котенок упал ему прямо в рот. Вкусный, но слишком мохнатый!
+if str<100 then instr action=#%ggname$ пошатал клен, но котенок слишком крепко вцепился в него лапами.
+goto #%arealoc$
+
+
+:area2_lookearth
+instr action=#%ggname$ осмотрел землю, но не нашел на ней ничего полезного.
+goto #%arealoc$
+
+:area2_eatearth
+food=food+10+rnd6
+instr action=#%ggname$ съел немного земли, но она не показалась ему слишком вкусной.
+goto #%arealoc$
+
+:area2_digearth
+str=str+rnd6
+r=rnd6
+instr deathstr=Его укусило нечто из глубин.
+if r=1 then rocks=rocks+1&instr action=#%ggname$ начал рыть землю и вырыл камень! Камень #%ggname$ взял с собой.
+if r=2 then sticks=sticks+1&instr action=#%ggname$ начал рыть землю и вырыл палку! Палку #%ggname$ взял с собой.
+if r=3 then food=food+20&instr action=#%ggname$ начал рыть землю и вырыл вкусного червя! И тут же съел его.
+if r=4 then instr action=#%ggname$ начал рыть землю и вырыл яму. Глубокая работа!
+if r=5 then health=health-10-rnd6&instr action=#%ggname$ начал рыть землю как вдруг нечто из глубин больно укусило его за руку.
+if r=6 then instr action=#%ggname$ было начал рыть землю, но вдруг ему стало лень, его покинула муза и он бросил рыть на середине.
+goto #%arealoc$
+
+:area2_lookdub
+instr action=#%ggname$ посмотрел на дуб. Мощь!
+goto #%arealoc$
+
+:area2_climbdub
+dex=dex+rnd6
+if rnd>50 then instr action=#%ggname$ влез на дуб и посмотрел вдаль. Он увидел бродящего по лесу древня, бандерлогов, большого удава и где-то далеко в море #%ggname$ увидел Ктулху с большими тентаклями. А потом #%ggname$ слез с дуба.
+if rnd<=50 then instr action=#%ggname$ оказался недостаточно ловким, чтобы влезть на дуб.
+goto #%arealoc$
+
+:area2_breakdub
+instr action=#%ggname$ пошатал дуб, но тот даже не шолохнулся. Мощь!
+goto #%arealoc$
+
+:area2_lookbees
+instr action=#%ggname$ осмотрел дупло и понял что в нем полно ядовитых пчел и вкусного меда!
+goto #%arealoc$
+
+:area2_talkbees
+health=100
+food=100
+int=int+rnd6
+achievements_bees=2
+instr action=#%ggname$ громко крикнул в дупло, пчелы обиделись и улетели! #%ggname$ поел вкусного меда! Полезно для горла!
+goto #%arealoc$
+
+
+:area2_eatbees
+health=health-20-rnd6-rnd6
+instr deathstr=Съел пчел.
+food=food+40+rnd6+rnd6
+achievements_bees=1
+instr action=#%ggname$ сунул в дупло руку, набрал меда с пчелами и сожрал. Мед был вкусный! Но огромные пчелы покусали ему руку и укусили за язык. Рука и язык немного распухли.
+goto #%arealoc$
+
+:area2_breakbees
+health=health-30-rnd6-rnd6-rnd6-rnd6
+str=str+rnd6
+instr deathstr=Пошатал дерево с пчелами и это закончилось фатально.
+instr action=#%ggname$ пошатал дерево, и из дупла вылетело множество разгневанных пчел и искусало #%ggname$а за разные места!
+goto #%arealoc$
+
+:area2_talkwolf
+int=int+rnd6
+achievements_wolf=2
+if int<=125 then instr action="#%ggname$!", сказал #%ggname$. "Вуф-вуф", ответил волк.
+if int>125 then instr action="#%ggname$!", крикнул #%ggname$. Волк обиделся и ушел.
+goto #%arealoc$
+
+:area2_eatwolf
+food=food+rnd6+36
+health=health-rnd6-rnd6-rnd6-rnd6
+instr deathstr=Сожрал волка.
+instr action=#%ggname$ сожрал волка, но волк больно покусал #%ggname$а перед этим.
+goto #%arealoc$
+
+:area2_hugwolf
+health=health-rnd6-rnd6-rnd6-rnd6
+instr deathstr=Обнял волка.
+achievements_wolf=1
+instr action=#%ggname$ обнял волка, и волк и #%ggname$ стали друзьями. Но волк тут же больно укусил #%ggname$а за руку. "Дружба не бывает без боли!", понял #%ggname$.
+goto #%arealoc$
+
+:area2_talkhare
+int=int+rnd6
+if int<100 then instr action="#%ggname$!", сказал #%ggname$. В ответ заяц отбарабанил ритм на пне.
+if int>=100 then instr action="#%ggname$!", крикнул #%ggname$. Заяц испугался и убежал.
+goto #%arealoc$
+
+:area2_eathare
+:area2_hughare
+health=health-rnd6-rnd6-rnd6-rnd6
+instr deathstr=Ловил зайца.
+rocks=rocks+1
+instr action=#%ggname$ попытался поймать зайца, но тот ринулся наутек. #%ggname$ побежал за зайцем, и тут же провалился в яму. В яме он больно ударился о камень и решил взять камень с собой!
+goto #%arealoc$
+
+
+:area2_final
+score=score+1
+proc name
+instr entname=#%s$ас
+instr enemyname=#%entname$
+instr action=#%ggname$ видит огромное дерево с глазами. Это древень #%entname$, хранитель леса.
+_<br> - Я защищу этот лес! - сказал #%entname$.
+_<br> - #%ggname$! - сказал #%ggname$. Что означало: "А вот и подходящее бревно для моего плота!".
+pln #%action$
+stopfooddie=1
+battle=1
+enemyhp=1300+(pluseshp*100)
+enemyhpmax=1300+(pluseshp*100)
+ggtop=0
+hidebuttons=0
+stance=1
+phrase=0
+enthands=2
+btn area2boss, Начать дуэль!
+end
+
+:area2boss
+if stance=1 then stance=0 else if stance=0 then stance=1
+step=step+1
+instr arealoc=area2boss
+instr winloc=area2win
+if stance=0 and enthands>0 then instr action=#%action$<br>Древень #%entname$ занес свою ветколапу для удара по #%ggname$у. Сейчас прилетит!
+if stance=0 and enthands=0 then instr action=#%action$<br>Древень #%entname$ без ветколап выглядит не очень и вызывает грусть.
+if stance=1 then instr action=#%action$<br>Древень #%entname$ негодует!
+if stance=2 then instr action=#%action$<br>#%ggname$ висит внизу ствола #%entname$а. Древень #%entname$ грязно ругается!
+if stance=3 then instr action=#%action$<br>#%ggname$ сидит на голове у #%entname$а. Древень #%entname$ недоволен!
+proc header
+if enemyhp<0 then goto area2win
+;pln #%enemyname$ настроен весьма агрессивно.
+if hidebuttons=1 then end
+if stance<2 and spear>0 then btn area2boss_spear, Пронзить
+if stance<2 and spear=0 and enthands>0 then btn area2boss_kick, Вломить
+if stance<2 and spear=0 and enthands=0 then btn area2boss_win, Вломить
+if stance=2 then btn area2boss_up, Вверх!
+if stance=3 and enthands>0 then btn area2boss_break, Ломать
+if stance=3 and enthands=0 then btn area2boss_win, Вломить
+btn area2boss_talk, Кричать
+if stance=0 then btn area2boss_run, Бежать
+if stance=1 then btn area2boss_hug, Обнять
+if stance=2 then btn area2boss_back, Бежать
+if stance=3 then btn area2boss_down, Вниз!
+end
+
+:area2boss_talk
+phrase=phrase+1
+health=health-rnd10-rnd10
+enemyhp=enemyhp-rnd#int$
+instr deathstr=Говорил с древнем #%entname$.
+if phrase=5 then phrase=1
+if phrase=1 then instr action=- #%ggname$, - сказал #%ggname$.<br>- Мерзкий варвар! - начал ругаться в ответ #%entname$. - Зачем ты пришел и разрушаешь лес?
+if phrase=2 then instr action=- #%ggname$, - сказал #%ggname$.<br>- Чудовище! - начал ругаться в ответ #%entname$. - Ты будешь наказан мною, хранителем леса!
+if phrase=3 then instr action=- #%ggname$, - сказал #%ggname$.<br>- Тысячи лет все деревья, и волки, и пчелы жили здесь в гармонии! - продолжает #%entname$. - Но ты нарушил эту гармонию!
+if phrase=4 then instr action=- #%ggname$, - сказал #%ggname$.<br>- Неандерталец! - продолжает #%entname$. - Ты пожираешь все, что видишь, не заботясь о последствиях!
+instr action=#%action$<br>Сраженный силой аргументов #%enemyname$а, #%ggname$ задумался.
+goto #%arealoc$
+
+:area2boss_run
+instr action=#%ggname$у едва удалось уклониться от ветколапы #%entname$а. Это было близко.
+goto #%arealoc$
+
+:area2boss_spear
+enemyhp=enemyhp-rnd10-rnd10-rnd10-rnd10-50
+spear=spear-1
+instr action=Копье #%ggname$а воткнулось прямо в ствол #%entname$у по самую рукоять! Больше у #%ggname$а нет копья.
+goto #%arealoc$
+
+:area2boss_kick
+enemyhp=enemyhp-rnd#str$-axe*100
+health=health-rnd50
+instr deathstr=Был убит ветколапой древня #%entname$.
+instr action=#%ggname$ от души врезал по стволу #%ggname$а! Тот чуть не упал, но успел схватится ветколапой за ближайшую сосну. Оправившись, #%entname$ больно ударил #%ggname$а ветколапой в ответ!
+goto #%arealoc$
+
+:area2boss_hug
+stance=2
+instr action=#%ggname$ подбежал поближе, и прыгнул на #%entname$а, повиснув прямо на стволе.
+goto #%arealoc$
+
+:area2boss_up
+stance=3
+instr action=#%ggname$ ловко забрался повыше по стволу #%entname$а и залез тому прямо на голову.
+goto #%arealoc$
+
+:area2boss_break
+enthands=enthands-1
+stance=0
+health=health-rnd6
+instr deathstr=Рухнул вниз ломая ветколапу древня #%entname$.
+sticks=sticks+1
+instr action=#%ggname$ повис на ветколапе #%entname$а и сломал ее. Вместо с ветколапой #%ggname$ рухнул вниз. #%ggname$ решил что ветколапа тоже палка, и можно взять ее с собой. #%entname$ заревел!
+goto #%arealoc$
+
+:area2boss_back
+stance=0
+instr action=#%ggname$ спрыгнул со ствола #%entname$а и отбежал подальше.
+goto #%arealoc$
+
+:area2boss_down
+stance=2
+instr action=#%ggname$ слез вниз по стволу #%entname$а.
+goto #%arealoc$
+
+:area2boss_win
+score=score+1
+hidebuttons=0
+battle=0
+stopfooddie=0
+entintro=0
+steps=step+5+rnd6
+instr arealoc=area4
+proc capletter
+instr pitonname=#%c$аа
+;pln #%action$
+instr action=
+proc header
+pln #%ggname$ вломил #%entname$у, тот покачнулся, и не в силах удержать равновесие без ветколап, рухнул о землю. Без ветколап #%entname$ не опасен и похож на простое говорящее бревно. #%ggname$ победил! Теперь у него есть бревно для плота! Но где же плот! #%ggname$ должен вернуться на побережье и найти плот!
+ent=1
+instr arealoc=area4
+btn area4, Идти искать плот
+btn area1_lightfire, Разжечь костер
+btn area1_craftfire, Творить
+end
+
+
+;-----------AREA 3  Ущелье
+:area3
+instr areaname = Ущелье
+step=step+1
+if entintro=0 then entintro=1&instr action=#%action$<br>- Ха, ты решил отправиться в Ущелье Бандерлогов? - поинтересовался дрвенеь #%entname$. - Ты не найдешь там ничего кроме своей гибели от лап самих бандерлогов или их повелителя, питона #%pitonname$!
+proc header
+r=rnd8
+if step>steps then goto area3_final
+if r=1 then goto area1_3
+if r=2 then goto area1_2
+if r=3 then goto area1_5
+if r=4 then goto area1_8
+if r=5 then goto area1_9
+if r=6 then goto area1_11
+if r=7 then goto area2_9
+if r=8 then goto area2_10
+goto area2_#r$
+end
+
+:area3_final
+pln
+pln Undred construction
+quit
+end
+
+
+;-----------AREA 4  Снова Пляж
+:area4
+instr areaname = Побережье
+step=step+1
+proc header
+r=rnd14
+if step>steps then goto area4_final
+goto area1_#r$
+end
+
+:area4_final
+score=score+1
+proc name
+instr enemyname1=#%s$аг
+proc name
+instr enemyname2=#%s$аг
+instr enemyname=#%enemyname1$-#%enemyname2$
+instr action=#%ggname$ видит двухголового #%enemyname$а и плот.
+_<br> - #%ggname$! - сказал #%ggname$. Что означало: "Это мой плот!".
+_<br> - #%enemyname$! - сказал #%enemyname$. Что означало: "Это наш плот!".
+pln #%action$
+stopfooddie=1
+battle=1
+enemyhp=600+(pluseshp*50)
+enemyhpmax=600+(pluseshp*50)
+ggtop=0
+hidebuttons=0
+btn area4boss, Начать дуэль!
+end
+
+:area4boss
+step=step+1
+instr arealoc=area4boss
+instr winloc=area4win
+if ggtop=0 and health>=0 and enemyhp>=0 then instr action=#%action$<br>#%enemyname$ преграждает путь к плоту!
+if ggtop=1 and health>=0 and enemyhp>=0 then instr action=#%action$<br>#%ggname$ сидит на #%enemyname$е!
+if ggtop=2 and health>=0 and enemyhp>=0 then instr action=#%action$<br>#%ggname$ лежит под #%enemyname$ом! #%ggname$у немножко неприятно!
+proc header
+if enemyhp<0 then goto area4win
+;pln #%enemyname$ настроен весьма агрессивно.
+if hidebuttons=1 then end
+if ggtop<>2 and spear>0 then btn area4boss_kick, Пронзить
+if ggtop<>2 and spear=0 then btn area4boss_kick, Вломить
+if ggtop=2 then btn area4boss_kick, Кусать
+if ggtop<>2 then btn area4boss_talk, Говорить
+if ggtop=2 then btn area4boss_oh, Стонать
+if ggtop=0 then btn area4boss_hug, Обнять
+if ggtop=1 then btn area4boss_stand, Встать
+if ggtop=2 then btn area4boss_choke, Лежать
+end
+
+:area4boss_talk
+r=rnd2
+if r=1 then instr action=- #%ggname$, - сказал #%ggname$.<br>- #%enemyname1$! - ударил себя в грудь #%enemyname1$.<br>- #%enemyname2$? - спросил #%enemyname2$.
+if r=2 then instr action=- #%ggname$, - сказал #%ggname$.<br>- #%enemyname2$! - ударил себя в грудь #%enemyname2$.<br>- #%enemyname1$? - спросил #%enemyname1$.
+hidebuttons=1
+question=r
+btn area4boss_talk1, #%ggname$!
+btn area4boss_talk2, #%ggname$?
+if int<=100 then btn area4boss_talk3, #%ggname$...
+if int>100 then btn area4boss_talk4, #%ggname$! #%ggname$?
+goto #%arealoc$
+
+:area4boss_talk1
+hidebuttons=0
+instr deathstr=Не нашел ответа на аргументы #%enemyname$.
+if question=1 then health=health-rnd6-rnd6-6&enemyhp=enemyhp-rnd#int$-rnd#int$&instr action=Сраженный силой аргументов #%ggname$а, #%enemyname1$ задумался. А #%enemyname2$ услышал неуверенный тон #%ggname$а и тут же вломил ему под дых.
+if question=2 then health=health-rnd6-rnd6-6&enemyhp=enemyhp-rnd#int$-rnd#int$&instr action=Сраженный силой аргументов #%ggname$а, #%enemyname2$ задумался. А #%enemyname1$ услышал неуверенный тон #%ggname$а и тут же вломил ему под дых.
+goto #%arealoc$
+
+:area4boss_talk2
+hidebuttons=0
+instr deathstr=Не нашел ответа на аргументы #%enemyname$.
+if question=2 then health=health-rnd6-rnd6-6&enemyhp=enemyhp-rnd#int$-rnd#int$&instr action=Сраженный силой аргументов #%ggname$а, #%enemyname1$ задумался. А #%enemyname2$ услышал неуверенный тон #%ggname$а и тут же вломил ему под дых.
+if question=1 then health=health-rnd6-rnd6-6&enemyhp=enemyhp-rnd#int$-rnd#int$&instr action=Сраженный силой аргументов #%ggname$а, #%enemyname2$ задумался. А #%enemyname1$ услышал неуверенный тон #%ggname$а и тут же вломил ему под дых.
+goto #%arealoc$
+
+:area4boss_talk3
+hidebuttons=0
+instr deathstr=Не нашел ответа на аргументы #%enemyname$.
+health=health-rnd6-rnd6-6
+health=health-rnd6-rnd6-6
+instr action=#%enemyname1$ услышал неуверенный тон #%ggname$а и тут же вломил ему под дых. #%enemyname2$ услышал неуверенный тон #%ggname$а и тут же вломил ему под дых.
+goto #%arealoc$
+
+:area4boss_talk4
+enemyhp=enemyhp-rnd#int$-rnd#int$
+hidebuttons=0
+instr action=Сраженные силой аргументов #%ggname$а, #%enemyname1$ и #%enemyname2$ посмотрели друг на друга и крепко задумались о тщете всего сущего.
+goto #%arealoc$
+
+:area4boss_kick
+instr deathstr=Получил по лицу от #%enemyname$.
+if ggtop=0 and spear=0 then health=health-rnd6-rnd6-rnd6&enemyhp=enemyhp-rnd#str$-axe*50&instr action=#%ggname$ от души врезал #%enemyname$у. В ответ, #%enemyname$ от души врезал #%ggname$у.
+if ggtop=1 and spear=0 then enemyhp=enemyhp-rnd#str$-axe*50-axe*50-rnd#str$-50&instr action=#%ggname$ от души вломил #%enemyname$у когтями и локтями, разбил #%enemyname1$у нос и сломал #%enemyname2$у зуб.
+if ggtop<>2 and spear>0 then spear=spear-1&enemyhp=enemyhp-rnd#str$-rnd#dex$-150&instr action=#%ggname$ взял свое каменное копье, и с радостью вонзил его в #%enemyname$у. Копье проткнуло #%enemyname$а насквозь!
+if ggtop=2 and dex>=75 then ggtop=1&health=health-6-rnd6-rnd6&enemyhp=enemyhp-rnd#dex$&instr action=#%enemyname$ от души врезал #%ggname$у локтем. В ответ #%ggname$ укусил #%enemyname$а за левую ягодицу. #%enemyname$ взвыл от боли. #%enemyname1$ и #%enemyname2$ одновременно потянулись к ягодице и потеряли равновесие. #%ggname$ теперь сверху!
+if ggtop=2 and dex<75 then health=health-6-rnd6-rnd6&enemyhp=enemyhp-rnd#dex$&instr action=#%enemyname$ от души врезал #%ggname$у локтем. В ответ #%ggname$ укусил #%enemyname$а за левую ягодицу. #%enemyname$ взвыл от боли.
+goto #%arealoc$
+
+:area4boss_oh
+health=health-6-rnd6-rnd6
+instr deathstr=Убит ударом #%enemyname$а.
+instr action=Не реагируя на стоны #%ggname$а, #%enemyname$ съездил #%ggname$у кулаком в глаз.
+goto #%arealoc$
+
+:area4boss_stand
+ggtop=0
+instr action=#%ggname$ встал с #%enemyname$, чтоб все было по честному.
+goto #%arealoc$
+
+
+:area4boss_choke
+ggtop=0
+instr action=#%ggname$ расслабился и лег неподвижно как будто он мертвый. #%enemyname$ вломил #%ggname$у напоследок, и слез с него. Хитрость удалась!
+health=health-rnd6-rnd6-rnd6
+instr deathstr=Неудачно притворился мертвым оказавшись под #%enemyname$ом.
+goto #%arealoc$
+
+:area4boss_hug
+instr action=#%ggname$ обнял #%enemyname$а, а #%enemyname$ обнял #%ggname$а. Они повалились на землю, и долго возились там.
+if dex>105 then goto area1boss_ggtop
+if dex<=105 then goto area1boss_enemytop
+goto #%arealoc$
+
+:area4boss_ggtop
+ggtop=1
+instr action=#%action$<br>В результате борьбы #%ggname$ оказался сверху. Хорошо.
+goto #%arealoc$
+
+:area4boss_enemytop
+ggtop=2
+instr action=#%action$<br>#%ggname$ оказался недостаточно ловким, и теперь он снизу. Снизу нравится не очень, когда на тебя сверху залез #%enemyname$!
+goto #%arealoc$
+
+
+:area4win
+score=score+1
+hidebuttons=0
+battle=0
+stopfooddie=0
+steps=step+7+rnd6
+instr arealoc=area5
+if ggtop<>1 then pln #%enemyname$ обиделся и ушел.
+if ggtop=1 then pln #%enemyname$ притворился мертвым, и #%ggname$ слез с него. Тогда #%enemyname$ неожиданно ожил и быстро убежал в сторону заката.
+ggtop=0
+pln #%ggname$ победил, теперь плот его. #%ggname$ может плыть!
+instr arealoc=area5
+btn area5_win, Сесть на плот и плыть
+btn area1_lightfire, Разжечь костер
+btn area1_craftfire, Творить
+end
+
+:area5
+proc header
+btn area5_win, Сесть на плот и плыть
+btn area1_lightfire, Разжечь костер
+btn area1_craftfire, Творить
+end
+
+:area5_win
+ent=0
+pln #%ggname$ сел на плот и уплыл в закат. #%ggname$ победил!
+pln Но вдруг из под воды вынырнул огромный и злой Ктулху и перевернул плот #%ggname$а!
+pln <img src=http://pavlenko.biz/urq/quests/pics/win.png>
+instr pluses=#%pluses$+
+instr plusesurl=#%plusesurl$!
+pluseshp=pluseshp+1
+if rocks>2 then rocks=1
+if sticks>2 then sticks=1
+if str>150 then str=str-15
+if int>150 then int=int-15
+if dex>150 then dex=dex-15
+if str>100 then str=str-10
+if int>100 then int=int-10
+if dex>100 then dex=dex-10
+if str>50 then str=str-5
+if int>50 then int=int-5
+if dex>50 then dex=dex-5
+str=str-25
+int=int-25
+dex=dex-25
+instr deathstr=Умер от старости устав начинать сначала.
+btn start, Дальше#%pluses$
+end
+quit
+end
