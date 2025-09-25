@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ifindex version="1.0" xmlns="http://babel.ifarchive.org/protocol/iFiction/">
+	<story>
+		<identification>
+			<ifid>C42072FB1EF354A73E48CC6AC137255C</ifid>
+			<format>urqw</format>
+		</identification>
+		<bibliographic>
+			<title>Остров Хйфич</title>
+			<author>Юрий Павленко (Goraph)</author>
+			<language>ru</language>
+			<firstpublished>2016-12-21</firstpublished>
+			<genre>Фэнтези</genre>
+			<group>URQ</group>
+			<description>Нъгхлич плыл на плоту, но плот перевернулся. Все камни пропали, все шкуры пропали. Нъгхлича выбросило на берег. Нъгхлич осмотрелся вокруг: побережье. «Нъгхлич!», подумал Нъгхлич. Что означало: «Я верну плот!»<br/>Текст и программирование: Фвждщлсич Павленко<br/>Иллюстрации и тестирование: Вцчжкич Бычков<br/>Ценные советы и едкие комментарии: Нола Нррчъърич<br/>Данная игра содержит изображения обнаженной натуры и сцены жестокого обращения с женщинами и животными, и не рекомендуется к проигрыванию.</description>
+		</bibliographic>
+		<contacts>
+			<url>https://urqw.github.io/UrqW/#99999</url>
+		</contacts>
+		<colophon>
+			<generator>UrqW Game Template</generator>
+			<originated>2025-09-24</originated>
+		</colophon>
+	</story>
+</ifindex>
